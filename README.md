@@ -20,7 +20,7 @@ export APP_ID="XXXXXXX-XXXXXXX-XXXXXXXX-XXXXXXX"
 
 ## Create a environment
  
-Run this command to build your strucutre
+Run this command to build your structure
 
 ```bash
 $ make setup
