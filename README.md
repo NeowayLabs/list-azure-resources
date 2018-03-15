@@ -1,4 +1,4 @@
-# AzureListPulbicIPs
+# ListAzurePublicIPs
 
 The most easy way to get all public IPs from the Azure subscriptions.
 
@@ -38,7 +38,7 @@ This command will read all the Subscriptons where the Service Principal has the 
 
 TIP: Create the Service Principal for this action only with READ permissions.
 
-But if you want only the IP list, use this:
+If you want only the IP list, use this:
 
 ```bash
 $ make | awk -F "," '{print $3}'
