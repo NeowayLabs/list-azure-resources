@@ -1,6 +1,6 @@
-# ListAzurePublicIPs
+# AzureTools
 
-The most easy way to get all public IPs from the Azure subscriptions.
+The most easy way to get informations from the Azure subscriptions.
 
 ## Prerequisites
 
@@ -13,13 +13,13 @@ The most easy way to get all public IPs from the Azure subscriptions.
 First of all, export your Azure Service Principal credentials to use this project.
 
 ```bash
-export PASSWORD="XXXXXXX-XXXXXXX-XXXXXXXX-XXXXXXX"
-export TENANT_ID="XXXXXXX-XXXXXXX-XXXXXXXX-XXXXXXX"
-export APP_ID="XXXXXXX-XXXXXXX-XXXXXXXX-XXXXXXX"
+export AZURE_SERVICE_PRINCIPAL="http://awesome-service-principal"
+export AZURE_CLIENT_SECRET="XXXXXXX-XXXXXXX-XXXXXXXX-XXXXXXX"
+export AZURE_TENANT_ID="XXXXXXX-XXXXXXX-XXXXXXXX-XXXXXXX"
 ```
 
 ## Create a environment
- 
+
 Run this command to build your structure
 
 ```bash
@@ -31,17 +31,24 @@ $ make setup
 To get the full information from subscriptions, use this command:
 
 ```bash
-$ make
+$ make export-public-ips
 ```
-
-This command will read all the Subscriptons where the Service Principal has the access.
-
-TIP: Create the Service Principal for this action only with READ permissions.
-
 If you want only the IP list, use this:
 
 ```bash
-$ make | awk -F "," '{print $3}'
+$ make export-public-ips | awk -F "," '{print $3}'
 ```
+
+## Getting the VM Image list
+
+To get the full information from subscriptions, use this command:
+
+```bash
+$ make export-vm-images
+```
+---
+This commands will read all the Subscriptons where the Service Principal has the access.
+
+TIP: Create the Service Principal for this action only with READ permissions.
 
 That's all :D
