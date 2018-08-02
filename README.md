@@ -26,17 +26,32 @@ Run this command to build your structure
 $ make setup
 ```
 
-## Getting the IP list
+## Getting the Public IP list
 
 To get the full information from subscriptions, use this command:
 
 ```bash
 $ make export-public-ips
 ```
+
+Output:
+
+```bash
+"Subscription name","public-ip-1","resource-group","xxx.xxx.163.121"
+"Subscription name","public-ip-2","resource-group","xxx.xxx.168.55"
+"Subscription name","public-ip-3","resource-group","xxx.xxx.67.68"
+```
+
+The output contains:
+
+```csv
+"Subscription name","public ip name","resource group","ip address"
+```
+
 If you want only the IP list, use this:
 
 ```bash
-$ make export-public-ips | awk -F "," '{print $3}'
+$ make export-public-ips | awk -F "," '{print $4}'
 ```
 
 ## Getting the VM Image list
@@ -45,6 +60,48 @@ To get the full information from subscriptions, use this command:
 
 ```bash
 $ make export-vm-images
+```
+
+Output:
+
+```bash
+"Subscription Name","vm-0","CoreOS","CoreOS","Stable","latest"
+"Subscription Name","vm-1","Canonical","UbuntuServer","16.04-LTS","latest"
+"Subscription Name","vm-2","Canonical","UbuntuServer","18.04-LTS","latest"
+```
+
+The output contains:
+
+```csv
+"Subscription name","vm name","publisher", "offer", "sku", "version"
+```
+
+## Getting the VM Public IP list
+
+To get the full information from subscriptions, use this command:
+
+```bash
+$ make export-vm-public-ips
+```
+
+Output:
+
+```bash
+"Subscription Name","vm-0","XXX.XXX.163.121"
+"Subscription Name","vm-1","XXX.XXX.67.68"
+"Subscription Name","vm-2","XXX.XXX.30.230"
+```
+
+The output contains:
+
+```csv
+"Subscription name","vm name","ip address"
+```
+
+If you want only the IP list, use this:
+
+```bash
+$ make export-vm-public-ips | awk -F "," '{print $3}'
 ```
 ---
 This commands will read all the Subscriptons where the Service Principal has the access.

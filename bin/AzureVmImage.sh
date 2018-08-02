@@ -49,7 +49,7 @@ function GetAzureVMs(){
 
 }
 
-# Looping with all the Subscriptions has the Service Principal can acess
+# Looping with all the Subscriptions has the Service Principal can access
 
 for subscription in `GetAzureSubscriptions` ; do
     GetAzureVMs $subscription
