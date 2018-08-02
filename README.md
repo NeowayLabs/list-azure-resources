@@ -36,7 +36,7 @@ $ make export-public-ips
 If you want only the IP list, use this:
 
 ```bash
-$ make export-public-ips | awk -F "," '{print $3}'
+$ make export-public-ips | awk -F "," '{print $4}'
 ```
 
 ## Getting the VM Image list
