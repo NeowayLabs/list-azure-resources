@@ -17,14 +17,11 @@ az login --service-principal --username $AZURE_SERVICE_PRINCIPAL \
 
 # Using JQ to make a magic with the return JSON
 
-JQ_FILTER=".[] |
+JQ_FILTER=".[].virtualMachine |
     {
         name: .name,
-        publisher: .storageProfile.imageReference.publisher,
-        offer: .storageProfile.imageReference.offer,
-        sku: .storageProfile.imageReference.sku,
-        version: .storageProfile.imageReference.version
-    } | [ .name, .publisher, .offer, .sku, .version ] | @csv"
+        ip: .network.publicIpAddresses[].ipAddress
+    } | [ .name, .ip ] | @csv"
 
 
 # Getting JSON with Subscriptions IDs
@@ -37,7 +34,7 @@ function GetAzureSubscriptions(){
 
 # Getting and cleaning a return JSON with Subscriptions IDs
 
-function GetAzureVMs(){
+function GetAzurePublicIPs(){
 
     subscription=$1
 
@@ -45,12 +42,12 @@ function GetAzureVMs(){
 
     subscription_name=$(az account show | jq --raw-output ".name")
 
-    az vm list | jq  --raw-output "$JQ_FILTER" | sed "s@^@\"$subscription_name\",@g"
+    az vm list-ip-addresses | jq  --raw-output "$JQ_FILTER" | sed "s@^@\"$subscription_name\",@g"
 
 }
 
 # Looping with all the Subscriptions has the Service Principal can access
 
 for subscription in `GetAzureSubscriptions` ; do
-    GetAzureVMs $subscription
+    GetAzurePublicIPs $subscription
 done

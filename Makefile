@@ -13,6 +13,11 @@ export-vm-images: setup ## List information about the vm images
 	@$(az-docker-run) \
 		AzureVmImage.sh
 
+.PHONY: export-vm-public-ips
+export-vm-public-ips: setup ## List information about the vm public ips
+	@$(az-docker-run) \
+		AzureVmPublicIP.sh
+
 .PHONY: export-public-ips
 export-public-ips: setup ## List information about the public ips
 	@$(az-docker-run) \
