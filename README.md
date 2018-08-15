@@ -103,6 +103,29 @@ If you want only the IP list, use this:
 ```bash
 $ make export-vm-public-ips | awk -F "," '{print $3}'
 ```
+
+## Getting the VM Size list
+
+To get the full information from subscriptions, use this command:
+
+```bash
+$ make export-vm-sizes
+```
+
+Output:
+
+```bash
+"Subscription Name","vm-0","Standard_ds2_v2"
+"Subscription Name","vm-1","Standard_ds2_v2"
+"Subscription Name","vm-2","Standard_ds2_v2"
+```
+
+The output contains:
+
+```csv
+"Subscription name","vm name","vm size"
+```
+
 ---
 This commands will read all the Subscriptons where the Service Principal has the access.
 

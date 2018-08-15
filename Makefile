@@ -18,6 +18,11 @@ export-vm-public-ips: setup ## List information about the vm public ips
 	@$(az-docker-run) \
 		AzureVmPublicIP.sh
 
+.PHONY: export-vm-sizes
+export-vm-sizes: setup ## List information about the vm sizes
+	@$(az-docker-run) \
+		AzureVmSize.sh
+
 .PHONY: export-public-ips
 export-public-ips: setup ## List information about the public ips
 	@$(az-docker-run) \
