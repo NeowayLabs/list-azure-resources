@@ -28,6 +28,11 @@ export-public-ips: setup ## List information about the public ips
 	@$(az-docker-run) \
 		AzurePublicIP.sh
 
+.PHONY: export-role-assignment
+export-public-ips: setup ## List information about the role assignments
+	@$(az-docker-run) \
+		AzureRoleAssignment.sh
+
 .PHONY: help
 help: ## Show help
 	@IFS=$$'\n' ; \

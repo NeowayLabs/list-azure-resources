@@ -126,6 +126,28 @@ The output contains:
 "Subscription name","vm name","vm size"
 ```
 
+## Getting the Role Assignment list
+
+To get the full information from subscriptions, use this command:
+
+```bash
+$ make export-role-assignment
+```
+
+Output:
+
+```bash
+"Subscription Name","c1111111-cf11-111b-b111-1d111f111c11","name.surname@domain.com.br","1ad1b1f1-111a-1111-b1cf-11ab111a1e0f","Owner"
+"Subscription Name","1ab1111d-b11b-1e11-b111-11111ef11111","name.surname@domain.com.br","d11ab11c-111f-111f-1111-1c11111f111c","Owner"
+"Subscription Name","111c1111-1111-1111-1f1a-111bab1a11f1","http://azure-cli-2019-01-08-15-38-34","a7111111-111e-11d1-b11a-11b11a1b1e11","Contributor"
+```
+
+The output contains:
+
+```csv
+"Subscription name","role name","service principal name", "service principal id", "role definition"
+```
+
 ---
 This commands will read all the Subscriptons where the Service Principal has the access.
 
